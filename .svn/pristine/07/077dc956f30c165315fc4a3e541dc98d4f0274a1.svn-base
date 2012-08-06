@@ -1,0 +1,47 @@
+package com.sanvi.support.http;
+
+import android.content.Context;
+
+public class Task extends BaseTask implements ReturnResult{
+
+	private OnTaskRequestListener onTaskRequestListener;
+	
+	public OnTaskRequestListener getOnTaskRequestListener() {
+		return onTaskRequestListener;
+	}
+
+	public void setOnTaskRequestListener(OnTaskRequestListener onTaskRequestListener) {
+		this.onTaskRequestListener = onTaskRequestListener;
+	}
+
+	public Task(Context context) {
+		super(context);
+	}
+	
+	public Task(String preDialogMessage, Context context) {
+		super(preDialogMessage, context);
+	}
+
+	@Override
+	public Result getResult() {
+		if(onTaskRequestListener != null) {
+			return onTaskRequestListener.getResult();
+		}else{
+			return null;
+		}
+	}
+
+	@Override
+	public void request() throws Exception {
+		if(onTaskRequestListener != null) {
+			onTaskRequestListener.onRequest();
+		}
+	}
+	
+	
+	public interface OnTaskRequestListener {
+		public void onRequest() throws Exception;
+		public Result getResult();
+	}
+
+}

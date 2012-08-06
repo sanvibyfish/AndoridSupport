@@ -1,0 +1,38 @@
+package com.sanvi.support.widget;
+
+import android.app.ActivityGroup;
+import android.app.LocalActivityManager;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+
+/**
+ * @author Sanvi E-mail:sanvibyfish@gmail.com
+ * @version ??»º?¶é?ï¼?010-9-15 ä¸??03:43:43
+ */
+public class LoadViewActivity extends ActivityGroup {
+
+	LinearLayout contentViewLayout;
+	private LocalActivityManager activityManager;
+	private LinearLayout.LayoutParams contentViewLayoutParams;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		contentViewLayout = new LinearLayout(this);
+		activityManager = getLocalActivityManager();
+		contentViewLayoutParams = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT); 
+	}
+
+	
+	public View getContentView(int index, Intent intent){
+		contentViewLayout.removeAllViews();
+		View view = activityManager.startActivity(String.valueOf(index), intent).getDecorView();
+		contentViewLayout.addView(view, contentViewLayoutParams);
+		return contentViewLayout;
+	}
+
+}

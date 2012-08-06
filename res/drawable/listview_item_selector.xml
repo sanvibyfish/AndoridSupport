@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    android:id="@+id/myselector"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+      <item android:state_enabled="false" android:state_focused="true"
+        android:drawable="@drawable/list_selector_background_disabled" />
+  <item android:state_pressed="true"
+        android:drawable="@drawable/list_selector_background_pressed" />
+  <item android:state_focused="true"
+        android:drawable="@drawable/list_selector_background_focus" />
+  
+</selector>

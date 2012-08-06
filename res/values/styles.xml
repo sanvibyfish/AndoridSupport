@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+　　<item name="android:windowFrame">@null</item>
+　　<item name="android:windowIsFloating">true</item>
+　　<item name="android:windowIsTranslucent">false</item>
+　　<item name="android:windowNoTitle">true</item>
+　　<item name="android:windowBackground">@color/transparent</item>
+　　<item name="android:backgroundDimEnabled">false</item>
+　　</style>
+
+    <style name="PopupAnimation" parent="@android:style/Theme.Dialog">  
+    <item name="android:windowEnterAnimation">@anim/push_up_in</item>  
+    <item name="android:windowExitAnimation">@anim/push_up_out</item>  
+   <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:background">@android:color/transparent</item>
+    <item name="android:windowIsFloating">true</item>
+    <item name="android:windowNoTitle">true</item>
+                <item name="android:windowFrame">@null</item>  
+            <item name="android:windowIsTranslucent">false</item>  
+</style> 
+<style name="Widget" parent="android:Widget"></style>
+        <style name="Widget.LinearLayout">
+    	<item name="android:background">@drawable/listview_item_selector</item>
+    </style>
+    
+            <style name="Widget.TextView">
+    	<item name="android:textColor">@color/textview_selector</item>
+    </style>
+    
+                <style name="Widget.TextView.Scala">
+    	<item name="android:textColor">@color/textview_scala_selector</item>
+    </style>
+    
+                <style name="AnimationFade">  
+<!--   PopupWindow左右弹出的效果-->  
+<item name="android:windowEnterAnimation">@anim/in_lefttoright</item>  
+<item name="android:windowExitAnimation">@anim/out_righttoleft</item>  
+</style>  
+</resources>

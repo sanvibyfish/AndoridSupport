@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, AndoridSupportActivity!</string>
+    <string name="app_name">AndoridSupport</string>
+    <string name="text_timeout_error">连接超时,请重试!</string>
+    <string name="text_data_parse_error">数据解析出错!</string>
+    <string name="text_unknown_error">未知错误!</string>
+    <string name="text_network_faild_error">无法连接网络，请检查网络连接</string>
+</resources>
