@@ -2,6 +2,7 @@ package com.sanvi.support.http;
 
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 
 import org.json.JSONException;
 
@@ -54,9 +55,22 @@ public abstract class BaseTask extends AsyncTask<Runnable, Void, MsgResult>  {
 		return this;
 	}
 
+	
 	private OnInvokeAterListener onInvokeAfterListener;
 
+	private OnInvokeErrorListener onInvokeErrorListener;
 	
+	public OnInvokeErrorListener getOnInvokeErrorListener() {
+		return onInvokeErrorListener;
+	}
+
+	public void setOnInvokeErrorListener(OnInvokeErrorListener onInvokeErrorListener) {
+		this.onInvokeErrorListener = onInvokeErrorListener;
+	}
+
+	public interface OnInvokeErrorListener {
+		public void onInvokeError(MsgResult result);
+	}
 	
 	public OnInvokeAterListener getOnInvokeAfterListener() {
 		return onInvokeAfterListener;
@@ -139,13 +153,18 @@ public abstract class BaseTask extends AsyncTask<Runnable, Void, MsgResult>  {
 			result.message = ActivityUtils.getString(context, R.string.text_network_faild_error);
 			result.exception = se;
 			return result; 
-		}
-		catch(SocketTimeoutException soe){
+		}catch(SocketTimeoutException soe){
 			if(DEBUG)soe.printStackTrace();
 			result.message = ActivityUtils.getString(context, R.string.text_timeout_error);
 			result.exception = soe;
 			return result; 
-		}catch(JSONException jsonException){
+		}catch(UnknownHostException soe){
+			if(DEBUG)soe.printStackTrace();
+			result.message = ActivityUtils.getString(context, R.string.text_network_faild_error);
+			result.exception = soe;
+			return result; 
+		}
+		catch(JSONException jsonException){
 			if(DEBUG)jsonException.printStackTrace();
 			result.message = ActivityUtils.getString(context, R.string.text_data_parse_error);
 			result.exception = jsonException;
@@ -171,6 +190,8 @@ public abstract class BaseTask extends AsyncTask<Runnable, Void, MsgResult>  {
 		
 		if(result.successed && onInvokeAfterListener != null){
 			onInvokeAfterListener.onInvokeAter(result);
+		}else if (onInvokeErrorListener != null ){
+			onInvokeErrorListener.onInvokeError(result);
 		}else{
 			Toast.makeText(context, result.message, Toast.LENGTH_SHORT).show();
 		}

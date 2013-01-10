@@ -107,6 +107,12 @@ public class ImageLoader {
             photoLoaderThread.start();
     }
     
+    
+    public String getImagePath(String url){
+        String filename=String.valueOf(url.hashCode());
+        File f=new File(cacheDir, filename);
+        return f.getAbsolutePath();
+    }
     private Bitmap getBitmap(String url) 
     {
     	System.out.println(url);

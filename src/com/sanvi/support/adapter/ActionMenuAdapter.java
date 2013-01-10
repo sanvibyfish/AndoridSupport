@@ -25,7 +25,7 @@ import android.widget.TextView;
  */
 public class ActionMenuAdapter extends BaseAdapter {
 
-
+  
 	private Context context;
 
 	public ActionMenuAdapter(Context c) {
