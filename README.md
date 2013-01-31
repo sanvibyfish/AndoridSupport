@@ -46,6 +46,12 @@ AndroidSupport
 			public void onInvokeAter(MsgResult result) {
 					//结束后更新UI等
 			}
+		})setOnInvokeErrorListener(new OnInvokeErrorListener(){
+			@Override
+			public void onInvokeError(MsgResult result){
+				//返回失敗后調用
+			}
+		
 		});
 
 #HTTP模块的使用
