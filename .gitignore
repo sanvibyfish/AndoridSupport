@@ -1,1 +1,14 @@
 /bin
+
+/.svn/pristine/27/
+/.svn/pristine/5e/
+/.svn/pristine/bd/
+/.svn/wc.db
+/bin/andoridsupport.jar
+/bin/classes/com/sanvi/support/http/BaseTask.class
+/bin/classes/com/sanvi/support/utils/ImageLoader$BitmapDisplayer.class
+/bin/classes/com/sanvi/support/utils/ImageLoader$PhotosLoader.class
+/bin/classes/com/sanvi/support/utils/ImageLoader$PhotosQueue.class
+/bin/classes/com/sanvi/support/utils/ImageLoader$PhotoToLoad.class
+/bin/classes/com/sanvi/support/utils/ImageLoader.class
+/project.properties
