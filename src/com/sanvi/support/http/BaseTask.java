@@ -25,10 +25,8 @@ public abstract class BaseTask extends AsyncTask<Runnable, Void, MsgResult>  {
 	private static final int STATE_FINISH = 1;
 	private static final int STATE_ERROR = 2;
 	protected static final String PROGRESS_DIALOG = null;
-	private static ProgressDialog progressDialog = null;
 	protected Context context = null;
 	private String preDialogMessage = null;
-	private boolean isLoading = true;
 	
 	
 	private static String TAG = "BaseTask";
@@ -87,16 +85,14 @@ public abstract class BaseTask extends AsyncTask<Runnable, Void, MsgResult>  {
 
 	/* 该方法将在执行实际的后台操作前被UI thread调用。可以在该方法中做一些准备工作，如在界面上显示一个进度条�?*/
 	public BaseTask(String preDialogMessage, Context context){
-		initBaseTask(preDialogMessage, context, true);
+		initBaseTask(context);
 		if(onTaskInitListener != null) {
 			onTaskInitListener.onTaskInitListener();
 		}
 	}
 	
-	private void  initBaseTask(String preDialogMessage, Context context,boolean isLoading){
-		this.preDialogMessage = preDialogMessage;
+	private void  initBaseTask(Context context){
 		this.context = context;
-		this.isLoading = isLoading;
 	}
 	
 	
@@ -108,7 +104,7 @@ public abstract class BaseTask extends AsyncTask<Runnable, Void, MsgResult>  {
 	 * 
 	 */
 	public BaseTask(Context context){
-		initBaseTask("", context, false);
+		initBaseTask(context);
 	}
 	
 
@@ -123,15 +119,6 @@ public abstract class BaseTask extends AsyncTask<Runnable, Void, MsgResult>  {
 	
 	@Override
 	 protected void onPreExecute() {
-		//如果isLoading等于true，表示调用系统loading
-		if(isLoading){
-				progressDialog = new ProgressDialog(context);
-				progressDialog.setTitle("");
-				progressDialog.setMessage(preDialogMessage);
-				progressDialog.setIndeterminate(true);
-				progressDialog.show();
-		}
-		
 		//执行客户写的代码
 		if(onInvokeBeforeListener != null) {
 			onInvokeBeforeListener.onInvokeBefore();
@@ -184,9 +171,6 @@ public abstract class BaseTask extends AsyncTask<Runnable, Void, MsgResult>  {
 	 */
 	@Override
 	protected void onPostExecute(MsgResult result) {
-		if(isLoading){
-			progressDialog.dismiss();
-		}
 		
 		if(result.successed && onInvokeAfterListener != null){
 			onInvokeAfterListener.onInvokeAter(result);

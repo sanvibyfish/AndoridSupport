@@ -12,3 +12,13 @@
 /bin/classes/com/sanvi/support/utils/ImageLoader$PhotoToLoad.class
 /bin/classes/com/sanvi/support/utils/ImageLoader.class
 /project.properties
+/bin/classes/com/sanvi/support/http/AbstractHttpApi.class
+/bin/classes/com/sanvi/support/R$anim.class
+/bin/classes/com/sanvi/support/R$attr.class
+/bin/classes/com/sanvi/support/R$color.class
+/bin/classes/com/sanvi/support/R$drawable.class
+/bin/classes/com/sanvi/support/R$id.class
+/bin/classes/com/sanvi/support/R$layout.class
+/bin/classes/com/sanvi/support/R$string.class
+/bin/classes/com/sanvi/support/R$style.class
+/gen/com/sanvi/support/R.java
